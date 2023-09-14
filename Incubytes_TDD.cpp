@@ -116,6 +116,35 @@ class Spacecraft
             }
         }
 
+        // Function to turn the spacecraft right  (based on spaceCraft's right hand)
+        void turnRight()
+        {
+            if (direction == 'N')
+            {
+                direction = 'E';
+            }
+            else if (direction == 'S')
+            {
+                direction = 'W';
+            }
+            else if (direction == 'E')
+            {
+                direction = 'S';
+            }
+            else if (direction == 'W')
+            {
+                direction = 'N';
+            }
+            else if (direction == 'U')
+            {
+                direction = 'S'; // Right turn while facing up becomes South
+            }
+            else if (direction == 'D')
+            {
+                direction = 'N'; // Right turn while facing down becomes North
+            }
+        }
+
         // Function to get the current position and direction
         void getCurrentPositionAndDirection()
         {
@@ -159,16 +188,28 @@ void runTests()
     cout<<"moveBackward: ";
     chandrayaan3.getCurrentPositionAndDirection(); // Expected: Position: (0, 0, 0), Direction: N
     
-    // Tests for TurnLeft operation ----------------------------------------------------------
+    // // Tests for TurnLeft operation ----------------------------------------------------------
+
+    // // Test 1: Turn Left when facing North
+    // chandrayaan3.turnLeft();
+    // cout<<"turnLeft: ";
+    // chandrayaan3.getCurrentPositionAndDirection(); // Expected: Position: (0, 0, 0), Direction: W
+
+    // // Test 2: Turn Left again when facing North 
+    // chandrayaan3.turnLeft();
+    // cout<<"turnLeft: ";
+    // chandrayaan3.getCurrentPositionAndDirection(); // Expected: Position: (0, 0, 0), Direction: S
+    
+    // Tests for TurnRight operation ----------------------------------------------------------
 
     // Test 1: Turn Left when facing North
-    chandrayaan3.turnLeft();
-    cout<<"turnLeft: ";
-    chandrayaan3.getCurrentPositionAndDirection(); // Expected: Position: (0, 0, 0), Direction: W
+    chandrayaan3.turnRight();
+    cout<<"turnRight: ";
+    chandrayaan3.getCurrentPositionAndDirection(); // Expected: Position: (0, 0, 0), Direction: E
 
     // Test 2: Turn Left again when facing North 
-    chandrayaan3.turnLeft();
-    cout<<"turnLeft: ";
+    chandrayaan3.turnRight();
+    cout<<"turnRight: ";
     chandrayaan3.getCurrentPositionAndDirection(); // Expected: Position: (0, 0, 0), Direction: S
 }
 
