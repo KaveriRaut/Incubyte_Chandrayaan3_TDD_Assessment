@@ -304,9 +304,9 @@ void runGivenTest()
 
 int main()
 {
-    // cout<<"runTests for each individual function testing: "<<endl;
-    // runTests();
-    // cout<<"//---------------------//"<<endl;
+    cout<<"runTests for each individual function testing: "<<endl;
+    runTests();
+    cout<<"//---------------------//"<<endl;
     cout<<"runGivenTest for entire commands for spacecraft movements testing: "<<endl;
     runGivenTest();
     return 0;
