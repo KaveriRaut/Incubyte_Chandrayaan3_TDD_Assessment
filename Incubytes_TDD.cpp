@@ -164,6 +164,25 @@ class Spacecraft
             }
         }
 
+        // Function to turn the spacecraft down
+        void turnDown()
+        {
+            // Implement downward turn logic to change the direction
+            if (direction == 'N' || direction == 'S' || direction == 'E' || direction == 'W')
+            {
+                direction = 'D';
+            }
+            else if (direction == 'D')
+            {
+                // The spacecraft is already facing down
+                // You can choose to handle this differently if needed
+            }
+            else if (direction == 'U')
+            {
+                direction = 'N'; // Assume facing North after turning down from up
+            }
+        }
+
         // Function to get the current position and direction
         void getCurrentPositionAndDirection()
         {
@@ -214,34 +233,42 @@ void runTests()
     // cout<<"turnLeft: ";
     // chandrayaan3.getCurrentPositionAndDirection(); // Expected: Position: (0, 0, 0), Direction: W
 
-    // // Test 2: Turn Left again when facing West 
+    // // // Test 2: Turn Left again when facing West 
     // chandrayaan3.turnLeft();
     // cout<<"turnLeft: ";
     // chandrayaan3.getCurrentPositionAndDirection(); // Expected: Position: (0, 0, 0), Direction: S
     
-    // Tests for TurnRight operation ----------------------------------------------------------
+    // // Tests for TurnRight operation ----------------------------------------------------------
 
-    // // Test 1: Turn Right when facing North
+    // // // Test 1: Turn Right when facing North
     // chandrayaan3.turnRight();
     // cout<<"turnRight: ";
     // chandrayaan3.getCurrentPositionAndDirection(); // Expected: Position: (0, 0, 0), Direction: E
 
-    // // Test 2: Turn Right again when facing East 
+    // // // Test 2: Turn Right again when facing East 
     // chandrayaan3.turnRight();
     // cout<<"turnRight: ";
     // chandrayaan3.getCurrentPositionAndDirection(); // Expected: Position: (0, 0, 0), Direction: S
     
-    // Tests for TurnUp operation ----------------------------------------------------------
+    // // Tests for TurnUp operation ----------------------------------------------------------
 
-    // Test 1: Turn Up when facing North
-    chandrayaan3.turnUp();
-    cout<<"turnUp: ";
-    chandrayaan3.getCurrentPositionAndDirection(); // Expected: Position: (0, 0, 0), Direction: U
+    // // Test 1: Turn Up when facing North
+    // chandrayaan3.turnUp();
+    // cout<<"turnUp: ";
+    // chandrayaan3.getCurrentPositionAndDirection(); // Expected: Position: (0, 0, 0), Direction: U
+    
+    // Tests for TurnDown operation ----------------------------------------------------------
+
+    // Test 1: Turn Down when facing North
+    chandrayaan3.turnDown();
+    cout<<"turnDown: ";
+    chandrayaan3.getCurrentPositionAndDirection(); // Expected: Position: (0, 0, 0), Direction: D
 
 }
 
 int main()
 {
+    cout<<"runTests for each individual function testing: "<<endl;
     runTests();
     return 0;
 }
