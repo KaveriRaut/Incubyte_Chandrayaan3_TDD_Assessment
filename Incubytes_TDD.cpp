@@ -28,7 +28,7 @@ class Spacecraft
         // y co-ordinates changes => for North , South direction
         // z co-ordinates changes => for Up , Down turn
 
-        // Function to move the spacecraft forward
+        // Function to move the spacecraft forward (position co-ordinates changes)
         void moveForward()
         {
             if (direction == 'N')
@@ -57,7 +57,7 @@ class Spacecraft
             }
         }
 
-        // Function to move the spacecraft backward
+        // Function to move the spacecraft backward (position co-ordinates changes)
         void moveBackward()
         {
             // Implement backward movement similar to forward movement but in the opposite direction
@@ -145,6 +145,25 @@ class Spacecraft
             }
         }
 
+        // Function to turn the spacecraft up (only direction changes)
+        void turnUp()
+        {
+            // Implement upward turn logic to change the direction
+            if (direction == 'N' || direction == 'S' || direction == 'E' || direction == 'W')
+            {
+                direction = 'U';
+            }
+            else if (direction == 'U')
+            {
+                // The spacecraft is already facing up
+                // You can choose to handle this differently if needed
+            }
+            else if (direction == 'D')
+            {
+                direction = 'N'; // Assume facing North after turning up from down
+            }
+        }
+
         // Function to get the current position and direction
         void getCurrentPositionAndDirection()
         {
@@ -195,22 +214,30 @@ void runTests()
     // cout<<"turnLeft: ";
     // chandrayaan3.getCurrentPositionAndDirection(); // Expected: Position: (0, 0, 0), Direction: W
 
-    // // Test 2: Turn Left again when facing North 
+    // // Test 2: Turn Left again when facing West 
     // chandrayaan3.turnLeft();
     // cout<<"turnLeft: ";
     // chandrayaan3.getCurrentPositionAndDirection(); // Expected: Position: (0, 0, 0), Direction: S
     
     // Tests for TurnRight operation ----------------------------------------------------------
 
-    // Test 1: Turn Left when facing North
-    chandrayaan3.turnRight();
-    cout<<"turnRight: ";
-    chandrayaan3.getCurrentPositionAndDirection(); // Expected: Position: (0, 0, 0), Direction: E
+    // // Test 1: Turn Right when facing North
+    // chandrayaan3.turnRight();
+    // cout<<"turnRight: ";
+    // chandrayaan3.getCurrentPositionAndDirection(); // Expected: Position: (0, 0, 0), Direction: E
 
-    // Test 2: Turn Left again when facing North 
-    chandrayaan3.turnRight();
-    cout<<"turnRight: ";
-    chandrayaan3.getCurrentPositionAndDirection(); // Expected: Position: (0, 0, 0), Direction: S
+    // // Test 2: Turn Right again when facing East 
+    // chandrayaan3.turnRight();
+    // cout<<"turnRight: ";
+    // chandrayaan3.getCurrentPositionAndDirection(); // Expected: Position: (0, 0, 0), Direction: S
+    
+    // Tests for TurnUp operation ----------------------------------------------------------
+
+    // Test 1: Turn Up when facing North
+    chandrayaan3.turnUp();
+    cout<<"turnUp: ";
+    chandrayaan3.getCurrentPositionAndDirection(); // Expected: Position: (0, 0, 0), Direction: U
+
 }
 
 int main()
