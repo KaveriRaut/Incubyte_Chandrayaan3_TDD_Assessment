@@ -191,6 +191,44 @@ class Spacecraft
             cout<<endl;
         }
 
+        //stores the mapping of operation char to actual operation function
+        void callOperations(vector<char>vec)
+        {
+            for(int i=0;i<vec.size();i++)
+            {
+                if(vec[i]=='f') 
+                { 
+                    this->moveForward();
+                    this->getCurrentPositionAndDirection();
+                }
+                else if(vec[i]=='b') 
+                { 
+                    this->moveBackward();
+                    this->getCurrentPositionAndDirection();
+                }
+                else if(vec[i]=='l') 
+                {
+                    this->turnLeft();
+                    this->getCurrentPositionAndDirection();
+                }
+                else if(vec[i]=='r') 
+                {
+                    this->turnRight();
+                    this->getCurrentPositionAndDirection();
+                }
+                else if(vec[i]=='u') 
+                {
+                    this->turnUp();
+                    this->getCurrentPositionAndDirection();
+                }
+                else if(vec[i]=='d') 
+                {
+                    this->turnDown();
+                    this->getCurrentPositionAndDirection();
+                }
+            }
+        }
+
 };
 
 
@@ -304,10 +342,47 @@ void runGivenTest()
 
 int main()
 {
-    cout<<"runTests for each individual function testing: "<<endl;
-    runTests();
-    cout<<"//---------------------//"<<endl;
-    cout<<"runGivenTest for entire commands for spacecraft movements testing: "<<endl;
-    runGivenTest();
+    // cout<<"runTests for each individual function testing: "<<endl;
+    // runTests();
+    // cout<<"//---------------------//"<<endl;
+    // cout<<"runGivenTest for entire commands for spacecraft movements testing: "<<endl;
+    // runGivenTest();
+    //---------------------------------------------------------------------------//
+
+    //----------------Complete Running Program with input/output from User------------//
+    // Initialize the spacecraft with a starting position and direction
+    int x,y,z;
+    char dir;
+    cout<<"Enter the current position co-ordinates and direction: ";
+    cin>>x>>y>>z>>dir;
+    Spacecraft chandrayaan3(x, y, z, dir); //0 0 0 N
+    // Spacecraft chandrayaan3(0, 0, 0, 'N');
+
+    // print current position and direction
+    cout << "Current Position and Direction: " << endl;
+    chandrayaan3.getCurrentPositionAndDirection();
+    //---------------------------------------------------------------------------//
+
+
+    //---------------------------------------------------------------------------//
+    // Execute commands : Commands: ['f', 'r', 'u', 'b', 'l']
+    int num_of_operations;
+    cout<<"Enter number of operations want to perform: ";
+    cin>>num_of_operations;
+    cout<<"Enter the sequence of commands you want to execute on spacecraft: "; //f,b,l,r,u,d
+    vector<char> operation_vec;
+    char op;
+    for(int i=0;i<num_of_operations;i++)
+    {
+        cin>>op;
+        operation_vec.push_back(op);
+    }
+    chandrayaan3.callOperations(operation_vec);
+    //---------------------------------------------------------------------------//
+    
+    // Get the final position and direction
+    cout << "Final Position and Direction: " << endl;
+    chandrayaan3.getCurrentPositionAndDirection();
+    //---------------------------------------------------------------------------//
     return 0;
 }
